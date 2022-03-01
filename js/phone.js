@@ -5,7 +5,7 @@ const searchPhone = () => {
 
     // clear data
     searchField.value = '';
-
+    
         //   result not found message
         if(searchText == '' ){
             document.getElementById('result-message').style.display='block';
@@ -17,13 +17,18 @@ const searchPhone = () => {
         .then(res => res.json())
         .then(phone => displySearchResult(phone.data))
        
-        }  
-           
+        }        
+       
+
+        // display result area
 
 const displySearchResult = data => {
     const searchResult = document.getElementById('search-result');
+    searchResult.textContent = '';
+    if(data.length == 0){
+        document.getElementById('result-message').style.display='block';
+    }
     data.slice(0,20).forEach(phone => {
-        // console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -38,9 +43,6 @@ const displySearchResult = data => {
         `;
         searchResult.appendChild(div);
 
-        if(searchText == !phone){
-            document.getElementById('result-message').style.display='block';
-          }
     })
     
 
@@ -59,16 +61,24 @@ const displayPhoneDetails = detail => {
     console.log(detail);
     const phoneDetails =document.getElementById('phone-details');
     const div = document.createElement('div');
+    document.getElementById('phone-details'). style.width=50%
     div.classList.add('card');
     div.innerHTML = `
     
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title fw-bold">Name:${detail.name}</h5>
               <p class="card-text fw-blod">Slug:${detail.slug}</p>
               <p class="card-text fw-blod">ReleaseDate:${detail.releaseDate}</p>
               <p class="card-text fw-blod"> Sensors:${detail.mainFeatures.sensors}</p>
+              <p class="card-text fw-blod"> Storage:${detail.mainFeatures.storage}</p>
+              <p class="card-text fw-blod"> Display-Size:${detail.mainFeatures.displaySize}</p>
+              <p class="card-text fw-blod"> Memory:${detail.mainFeatures.memory}</p>
+              <p class="card-text fw-blod"> Others:${detail.others.Bluetooth}</p>
              
             </div>
+    
     `;
     phoneDetails.appendChild(div);
+
+    
 }
