@@ -58,8 +58,8 @@ const showDetails = phoneDetail => {
 }
 
 const displayPhoneDetails = detail => {
-    console.log(detail);
     const phoneDetails =document.getElementById('phone-details');
+    phoneDetails.textContent='';
     const div = document.createElement('div');
     document.getElementById('phone-details'). style.width=50%
     div.classList.add('card');
