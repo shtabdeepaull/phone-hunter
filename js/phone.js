@@ -42,7 +42,7 @@ const displySearchResult = data => {
       </div>
         `;
         searchResult.appendChild(div);
-
+        document.getElementById('result-message').style.display='none';
     })
     
 
@@ -73,12 +73,11 @@ const displayPhoneDetails = detail => {
               <p class="card-text fw-blod"> Storage:${detail.mainFeatures.storage}</p>
               <p class="card-text fw-blod"> Display-Size:${detail.mainFeatures.displaySize}</p>
               <p class="card-text fw-blod"> Memory:${detail.mainFeatures.memory}</p>
-              <p class="card-text fw-blod"> Others:${detail.others.Bluetooth}</p>
+              <p class="card-text fw-blod"> Others:${detail?.others?.Bluetooth}</p>
              
             </div>
     
     `;
-    phoneDetails.appendChild(div);
-
+    phoneDetails.appendChild(div);  
     
 }
